@@ -1,69 +1,40 @@
-<!-- Play on Poki -->
-<!-- NOTE:
-	this HTML will not be used on Poki.com, the HTML will be auto generated from the index.json.
-	If you wish to add custom HTML you can add this in the "extra_html" part of the JSON.
--->
 <!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Space Tacos</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
+    <script src="Build/SpaceTacos_5.03.008_07.11.2023_11.41AM.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
 
-	<title>Space Tacos - Play on Poki</title>
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
 
-	<script>
-	var buildUrl = 'Build';
-	window.config = {
-		loader: 'unity-2020',
-		debug: false,
-		maxRatio: 16 / 9,
-		minRatio: 9 / 16,
+        document.body.style.textAlign = "left";
+      }
 
-		title: 'Space Tacos',
-
-		thumbnail: 'https://img.poki.com/cdn-cgi/image/quality=80,width=100,height=100,fit=cover,g=0.5x0.5,f=auto/a398cd4e645b76810031bd97f8697414.png',
-		numScreenshots: 4,
-
-		metadata:{
-			"poki_template_version": 1,
-			"extra_html": {
-				"head": [
-					"<!-- will be copied to the resulting head //-->"
-				],
-				"body": [
-					"<!-- will be copied to the resulting body //-->",
-					"<!-- will also be copied to the resulting body //-->"
-				]
-			},
-			"background_color": "#231F20",
-			"background_filename": "",
-			"code_filename": "965eda1589e29fddf20330abcd728e79.wasm.br",
-			"company_name": "Cutality",
-			"data_filename": "0c433024f273de0100621274943e10fd.data.br",
-			"decompression_fallback": "",
-			"development_player": "false",
-			"framework_filename": "fc3500ac0d0d23a4d04abf4f50c005d6.js.br",
-			"height": "600",
-			"loader_filename": "SpaceTacos_5.03.007_07.11.2023_11.01AM.loader.js",
-			"memory_filename": "",
-			"product_name": "Space Tacos",
-			"product_version": "5.03",
-			"splash_screen_style": "Dark",
-			"symbols_filename": "",
-			"unity_version": "2022.3.12f1",
-			"use_data_caching": "true",
-			"use_threads": "false",
-			"use_wasm": "true",
-			"use_webgl_1_0": "false",
-			"use_webgl_2_0": "true",
-			"width": "960"
-		}
-	};
-	</script>
-</head>
-<body>
-	<script src="https://game-cdn.poki.com/loaders/v3/master-loader.js"></script>
-	<div style="position:absolute;top:0px;left:0px;z-index:9999;margin:10px">
-		This HTML will not be used on Poki.com. A new HTML will be auto generated from the JSON.
-	</div>
-</body>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/bed318fd2a50efea890d67c6efd7944d.data.br",
+        frameworkUrl: "Build/fc3500ac0d0d23a4d04abf4f50c005d6.js.br",
+        codeUrl: "Build/965eda1589e29fddf20330abcd728e79.wasm.br",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Cutality",
+        productName: "Space Tacos",
+        productVersion: "5.03",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+  </body>
 </html>
